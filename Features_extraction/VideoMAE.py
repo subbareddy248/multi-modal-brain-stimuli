@@ -112,8 +112,3 @@ for eachmovie in moviesnames[3:]:
                 temp.append(outputs['hidden_states'][eachlayer][0].mean(0).cpu().detach().numpy())
             bourne_dict[eachmovie].append(np.array(temp))
     np.save(eachmovie+'_vivit',np.array(bourne_dict[eachmovie]))
-
-
-# final_bourne = np.array(list(bourne_dict.values()))
-
-# np.save('bourne_videomae',final_bourne)
