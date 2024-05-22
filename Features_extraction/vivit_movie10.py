@@ -91,11 +91,7 @@ model.to(device)
 moviesnames = ['wolf01','wolf02', 'wolf03', 'wolf04', 'wolf05', 'wolf06', 'wolf07', 'wolf08', 'wolf09', 'wolf10',
               'wolf11','wolf12','wolf13','wolf14','wolf15','wolf16','wolf17']
 
-moviesnames = ['bourne01','bourne02', 'bourne03', 'bourne04', 'bourne05', 'bourne06', 'bourne07', 'bourne08', 'bourne09', 'bourne10']
-
-
-for eachmovie in moviesnames[3:]:
-    print(eachmovie)
+for eachmovie in moviesnames:
     bourne_dict = {}
     bourne_dict[eachmovie] = []
     files = natsorted(os.listdir('../wolf_videos/'+eachmovie))
