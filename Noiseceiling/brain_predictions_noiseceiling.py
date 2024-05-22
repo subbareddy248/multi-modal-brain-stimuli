@@ -42,7 +42,7 @@ def kernel_ridge(xtrain, xtest, ytrain, ytest):
     corr = pearcorr(np.nan_to_num(ytest.T),np.nan_to_num(ypred.T))
     return corr
 
-subs = ['1','5','3']
+subs = ['1','2','3','4','5','6']
 
 save_dir = 'movie10_predictions_results_wolf/noise_ceiling/'
 if not os.path.exists(save_dir):
