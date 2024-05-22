@@ -45,47 +45,14 @@ def process_video_audio(video_path, audio_path):
     return video_embedding, audio_embedding, np.array(joint_embedding) 
 
 
-# In[3]:
-
-
-moviesnames = ['bourne01','bourne02', 'bourne03', 'bourne04', 'bourne05', 'bourne06', 'bourne07', 'bourne08', 'bourne09', 'bourne10']
-moviesnames = ['wolf01','wolf02', 'wolf03', 'wolf04', 'wolf05', 'wolf06', 'wolf07', 'wolf08', 'wolf09', 'wolf10',
-              'wolf11','wolf12','wolf13','wolf14','wolf15','wolf16','wolf17']
 
 moviesnames = ['life01','life02', 'life03', 'life04', 'life05']
-
-# In[42]:
 
 
 processor = TvltProcessor.from_pretrained("ZinengTang/tvlt-base", cache_dir='./')
 
 model = TvltModel.from_pretrained("ZinengTang/tvlt-base", cache_dir='./')
 model.to(device)
-
-# In[9]:
-
-
-# waveform = AudioSegment.from_wav('./bourne_videos/bourne01/part_1.wav')
-# waveform = waveform.set_channels(1)
-# waveform = waveform.get_array_of_samples()
-
-
-# In[40]:
-
-
-# container = av.open('./bourne_videos/bourne01/part_2.mp4')
-# # sample 16 frames
-# indices = sample_frame_indices(clip_len=1, frame_sample_rate=16, seg_len=container.streams.video[0].frames)
-# video = read_video_pyav(container, indices)
-
-
-# In[24]:
-
-
-# input_dict = processor(list(video), waveform, sampling_rate=44100, return_tensors="pt")
-
-
-# In[47]:
 
 
 def process_folder(folder_path):
@@ -119,9 +86,16 @@ def process_folder(folder_path):
     with open(os.path.join('.', 'joint_embeddings_'+folder_path.split('/')[2]+'.pkl'), 'wb') as f:
         pickle.dump(joint_embeddings, f)
 
-
-# In[48]:
-
-
-for eachmovie in moviesnames[3:]:
+for eachmovie in moviesnames:
     process_folder('./life_videos/'+eachmovie)
+
+moviesnames = ['bourne01','bourne02', 'bourne03', 'bourne04', 'bourne05', 'bourne06', 'bourne07', 'bourne08', 'bourne09', 'bourne10']
+
+for eachmovie in moviesnames:
+    process_folder('./bourne_videos/'+eachmovie)
+
+moviesnames = ['wolf01','wolf02', 'wolf03', 'wolf04', 'wolf05', 'wolf06', 'wolf07', 'wolf08', 'wolf09', 'wolf10',
+              'wolf11','wolf12','wolf13','wolf14','wolf15','wolf16','wolf17']
+
+for eachmovie in moviesnames:
+    process_folder('./wolf_videos/'+eachmovie)
